@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using RedisClient;
 
 namespace CacheProvider
 {
@@ -9,6 +10,12 @@ namespace CacheProvider
         /// lifetime in second
         /// </summary>
         private const int Duration = 120;
+
+        public CacheProvider(RedisClient redisClient)
+        {
+            CacheSyncronizer.InitializeMessageChannel(redisClient);
+            Logger.Trace($"{GetType().Name} created.");
+        }
 
         private static DateTime ExpirationDate => DateTime.Now.AddSeconds(Duration);
 

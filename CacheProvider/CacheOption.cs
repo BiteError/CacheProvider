@@ -15,11 +15,4 @@
         /// </summary>
         External
     }
-    internal static class CacheSyncronizer
-    {
-        public static void Invalidate(string key)
-        {
-            //TODO: sync with Redis, MessageBus etc
-        }
-    }
 }
